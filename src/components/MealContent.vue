@@ -68,11 +68,17 @@ import { reactive, ref, watchEffect, onMounted } from 'vue';
         <!-- <MealIngredient @on-filter="filterMeal"/> -->
 
         <!-- mealByCategory -->
-        <TagBar :tags="tagsCategory" @filter-meal="filterCategoryMeal"/>
-        <CardMeal :meals="mealByCategory" :tag="filter.category" :title="filter.category" :loading="loading"/>
+        <CardMeal :meals="mealByCategory" :tag="filter.category" :title="filter.category" :loading="loading">
+            <template #tagbar>
+                <TagBar :tags="tagsCategory" @filter-meal="filterCategoryMeal"/>
+            </template>
+        </CardMeal>
 
         <!-- JapaneseMeal -->
-        <TagBar :tags="tagsCountry" @filter-meal="filterCountryMeal"/>
-        <CardMeal :meals="mealByCountry" :tag="filter.country" :title="filter.country" :loading="loading"/>
+        <CardMeal :meals="mealByCountry" :tag="filter.country" :title="filter.country" :loading="loading">
+            <template #tagbar>
+                <TagBar :tags="tagsCountry" @filter-meal="filterCountryMeal"/>
+            </template>
+        </CardMeal>
     </div>
 </template>
