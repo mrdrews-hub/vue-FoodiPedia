@@ -68,6 +68,7 @@ import { reactive, ref, watchEffect, onMounted } from 'vue';
         <!-- <MealIngredient @on-filter="filterMeal"/> -->
 
         <!-- mealByCategory -->
+        <h2 class="text-xl">Food By Category</h2>
         <CardMeal :meals="mealByCategory" :tag="filter.category" :title="filter.category" :loading="loading">
             <template #tagbar>
                 <TagBar :tags="tagsCategory" @filter-meal="filterCategoryMeal"/>
@@ -75,6 +76,7 @@ import { reactive, ref, watchEffect, onMounted } from 'vue';
         </CardMeal>
 
         <!-- JapaneseMeal -->
+        <h2 class="text-xl">Food By Country</h2>
         <CardMeal :meals="mealByCountry" :tag="filter.country" :title="filter.country" :loading="loading">
             <template #tagbar>
                 <TagBar :tags="tagsCountry" @filter-meal="filterCountryMeal"/>

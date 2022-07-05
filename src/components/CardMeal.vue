@@ -43,7 +43,7 @@ const goToDetail = (id) => {
 <template>
 
 <div class="mx-3 md:mx-1">
-    <div class="flex items-center mt-4">
+    <div class="flex items-center mt-2">
         <!-- <hr class="border-2 border-teal-400 w-1/2"> -->
         <h1 class="font-bold text-lg mx-3 text-center min-w-max">{{ title }}</h1>
         <hr class="border-2 bg-teal-400 border-teal-400 w-full rounded-full">

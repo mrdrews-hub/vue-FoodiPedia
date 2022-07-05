@@ -3,6 +3,8 @@ import axios from 'axios';
 import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
+import FavoriteButton from '@/components/FavoriteButton.vue';
+
 const prop = defineProps(['id'])
 const router = useRouter()
 const datas = (await axios(`lookup.php?i=${prop.id}`)).data.meals
@@ -32,12 +34,13 @@ const measure = filterMeasure("strMeasure1", datas)
 
 const ingredient = measure.map((el,i) => el + " " + ingredients[i])
 const str = datas.map(el => el.strInstructions)[0].split('\r')
-onMounted(() => {
-  const btnBack = document.querySelector('#back');
-  btnBack.addEventListener('click', () => {
-    router.push({ name: 'home' })
-  })
-})
+
+// onMounted(() => {
+//   const btnBack = document.querySelector('#back');
+//   btnBack.addEventListener('click', () => {
+//     router.push({ name: 'home' })
+//   })
+// })
 </script>
 
 <template>
@@ -50,17 +53,16 @@ onMounted(() => {
         <div class="grow-0 shrink-0 basis-auto block lg:flex flex-col w-full lg:w-6/12 xl:w-4/12">
           <img :src="meal.strMealThumb" :alt="meal.strMeal"
             class="w-full rounded-t-lg lg:rounded-tr-none lg:rounded-bl-lg" />
-            <button type="button"
-              class="text-white mt-2 inline-block px-6 py-3 font-bold bg-pink-500 uppercase rounded shadow-md hover:bg-pink-600 transition duration-150 ease-in-out">
-              Add Favorite
-            </button>
         </div>
         <div class="grow-0 shrink-0 basis-auto w-full lg:w-6/12 xl:w-8/12">
           <div class="px-5 py-6 md:px-8">
-            <div class="title mb-6 text-left">
-              <h2 class="text-2xl font-bold mb-2 leading-7 lg:text-3xl">{{ meal.strMeal }}</h2>
-              <p v-if="meal.strTags"><b>tags: </b>{{ meal.strTags }}</p>
-              <p><b>area: </b>{{ meal.strArea }}</p>
+            <div class="title mb-6 text-left flex w-full justify-between">
+              <div class="flex flex-col">
+                <h2 class="text-2xl font-bold mb-2 leading-7 lg:text-3xl">{{ meal.strMeal }}</h2>
+                <p><b>#</b>{{ meal.strArea + " Food" }}</p>
+                <p v-if="meal.strTags"><b>tags: </b>{{ meal.strTags }}</p>
+              </div>
+              <FavoriteButton :id="meal.idMeal" :img="meal.strMealThumb" :title="meal.strMeal" :desc="meal.strInstructions" :category="meal.strCategory"/>
             </div>
             <h2 class="font-bold text-lg mb-2">Ingredients: </h2>
             <div class="mb-2 flex flex-wrap flex-1">

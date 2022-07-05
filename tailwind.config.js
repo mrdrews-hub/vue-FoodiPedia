@@ -10,6 +10,9 @@ module.exports = {
       padding: '14px'
     },
     extend: {
+      fontFamily: {
+        'montserrat': ['Montserrat', 'sans-serif']
+      },
       backgroundImage: {
         bglogin: "url(/bg-login.jpg)",
         bghero: "url(./src/assets/img/food2.jpg)",

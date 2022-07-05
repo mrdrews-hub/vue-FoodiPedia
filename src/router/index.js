@@ -33,6 +33,11 @@ export const router = createRouter({
             component: GalleryPage
         },
         {
+            path: '/favorite',
+            name: 'favorite',
+            component: () => import('../views/FavoritePage.vue')
+        },
+        {
             path: '/:pathMatch(.*)*',
             name: 'notfound',
             component: NotFound

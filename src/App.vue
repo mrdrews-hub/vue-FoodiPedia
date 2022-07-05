@@ -9,7 +9,7 @@ const route = useRoute()
 
 <template>
 <Navbar/>
-    <RouterView/>
+<RouterView />
 </template>
 
 <style>
